@@ -1,12 +1,29 @@
 import {Schema,model} from "mongoose";
 
-const blogShema = new Schema({
+const peliculasShema = new Schema({
     title: {
         type: String,
     },
 
-    content: {
+    description: {
         type: String,
+    },
+    
+    director: {
+        type: String,
+    },
+
+
+    genre: {
+        type: String,
+    },
+
+    anio:{
+        type: Number,
+    },
+
+    duration: {
+        type: Number,
     },
 
     image:{
@@ -17,4 +34,4 @@ const blogShema = new Schema({
     strict:false
 })
 
-export default model("Blog",blogShema)
+export default model("Peliculas",peliculasShema)

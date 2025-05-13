@@ -7,16 +7,16 @@ import {config} from "../config.js"
 import { json } from "express";
 
 registerEmployeesController.insertregisterEmployees = async (req,res) =>{
-    const{name, lastname, birthday, email,address,hireDate,password,telephone,dui,isssNumber,isVerified} = req.body;
+    const{name,email,password,telephone,address,role,hireDate,salary,active} = req.body;
     try{
-        const existEmployee = await EmployeesModels.findOne({email})
+        const existEmployee = await EmployeesModels.findOne({correo})
         if(existEmployee){
             return res.json({message:"Employee already exists"})
         }
 
         const passwordHash = await bcryptjs.hash(password, 10);
 
-        const newRegisterEmployees = new EmployeesModels({ name, lastname, birthday, email,address,hireDate,password:passwordHash,telephone,dui,isssNumber,isVerified })
+        const newRegisterEmployees = new EmployeesModels({name,email,password,telephone,address,role,hireDate,salary,active})
         
         await newRegisterEmployees.save();
 

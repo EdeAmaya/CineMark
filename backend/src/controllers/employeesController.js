@@ -13,8 +13,8 @@ EmployeesController.getEmployees = async (req, res) => {
 //insert
 
 EmployeesController.insertEmployees = async (req, res) => {
-    const {name, lastname, birthday, email,address,hireDate,password,telephone,dui,isssNumber,isVerified} = req.body;
-    const newProduct = new employeesModel({name, lastname, birthday, email,address,hireDate,password,telephone,dui,isssNumber,isVerified})
+    const {name,email,password,telephone,address,role,hireDate,salary,active} = req.body;
+    const newProduct = new employeesModel({name,email,password,telephone,address,role,hireDate,salary,active})
 
     await newProduct.save()
     res.json({message: "employees saved"});
@@ -32,8 +32,8 @@ EmployeesController.deleteEmployees = async (req, res) => {
 //update
 
 EmployeesController.updateEmployees = async (req, res) => {
-    const {name, lastname, birthday, email,address,hireDate,password,telephone,dui,isssNumber,isVerified} = req.body;
-    const updatedEmployees = await employeesModel.findByIdAndUpdate(req.params.id, {name, lastname, birthday, email,address,hireDate,password,telephone,dui,isssNumber,isVerified} , {new: true} )
+    const {name,email,password,telephone,address,role,hireDate,salary,active} = req.body;
+    const updatedEmployees = await employeesModel.findByIdAndUpdate(req.params.id, {name,email,password,telephone,address,role,hireDate,salary,active} , {new: true} )
 
     res.json({message: "Updated employees"})
 };

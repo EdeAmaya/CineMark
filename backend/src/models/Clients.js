@@ -2,39 +2,22 @@ import {Schema,model} from "mongoose";
 
 const clientsShema = new Schema({
     name: {
-        type: String,
-        require: true,
-        maxLength:100
+        type: String,   
     },
-
-    lastName: {
-        type: String,
-        require: true,
-        maxLength:100
+    email: {
+        type: String
     },
-
-    birthday:{
-        type:String
+    password: {
+        type: String
     },
-
-    email:{
-        type:String
+    telephone: {
+        type: String
     },
-
-    password:{
-        type:String
+    address: {
+        type: String
     },
-
-    telephone:{
-        type:String
-    },
-
-    dui:{
-        type:String
-    },
-
-    isVerified:{
-        type:Boolean
+    active: {
+        type: Boolean
     }
 },{
     timestamps : true,

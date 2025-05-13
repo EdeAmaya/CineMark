@@ -1,13 +1,13 @@
 import express from 'express';
 import multer from 'multer';
-import blogController from '../controllers/blogController.js';
+import peliculasController from '../controllers/peliculasController.js';
 
 const router = express.Router();
 
 const upload = multer({dest: 'public/'});
 
 router.route("/")
-.get(blogController.getAllPosts)
-.post(upload.single("image"),blogController.createPost);
+.get(peliculasController.getAllPosts)
+.post(upload.single("image"),peliculasController.createPost);
 
 export default router;

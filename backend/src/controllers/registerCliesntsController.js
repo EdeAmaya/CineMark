@@ -9,7 +9,7 @@ import {config} from "../config.js";
 const registerClientsController = {};
 
 registerClientsController.registerClient = async (req, res) => {
-    const { name, lastName, birthday, email, password, telephone, dui,isVerified } = req.body;
+    const { name,email,password,telephone,address,active} = req.body;
 
     try {
         // Check if the email already exists
@@ -23,13 +23,11 @@ registerClientsController.registerClient = async (req, res) => {
         // Create a new client
         const newClient = new clientsModel({
             name,
-            lastName,
-            birthday,
             email,
             password: hashedPassword,
             telephone,
-            dui: dui || null,
-            isVerified: isVerified || false,
+            address,
+            active: active || false,
         });+
         // Save the client to the database
         await newClient.save();
@@ -86,7 +84,7 @@ registerClientsController.verifyCodeEmail = async (req, res) => {
         }
         // Update the client's isVerified field
         const client = await clientsModel.findOne({ email });
-        client.isVerified = true;
+        client.active = true;
         await client.save();
         res.json({ message: "Email verified successfully" });
         res.clearCookie("verificationToken");

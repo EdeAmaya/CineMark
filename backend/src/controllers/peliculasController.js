@@ -1,4 +1,4 @@
-import blogModel from '../models/Blog.js';
+import peliculasModel from '../models/Peliculas.js';
 import {v2 as cloudinary} from 'cloudinary';
 
 import {config} from '../config.js';
@@ -9,16 +9,16 @@ cloudinary.config({
     api_secret: config.cloudinary.cloudinary_api_secret,
 });
 
-const blogController = {}
+const peliculasController = {}
 
-blogController.getAllPosts = async (req, res) => {
-    const posts = await blogModel.find();
+peliculasController.getAllPosts = async (req, res) => {
+    const posts = await peliculasModel.find();
     res.json(posts);
 }
 
-blogController.createPost = async (req, res) => {
+peliculasController.createPost = async (req, res) => {
     try {
-        const { title, content } = req.body;
+        const { title, description,director,genre,anio,duration } = req.body;
         let imageUrl = ""
         
         if (req.file) {
@@ -30,7 +30,7 @@ blogController.createPost = async (req, res) => {
             imageUrl = result.secure_url;
         }
 
-        const newPost = new blogModel({title,content, image: imageUrl })
+        const newPost = new peliculasModel({title, description,director,genre,anio,duration, image: imageUrl })
         newPost.save()
         res.json({message:"post saved"})
 
@@ -39,4 +39,4 @@ blogController.createPost = async (req, res) => {
     }
 }
 
-export default blogController;  
+export default peliculasController;  

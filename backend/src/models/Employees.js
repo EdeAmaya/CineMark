@@ -4,24 +4,9 @@ const EmployeesShema = new Schema({
 
     name: {
         type: String,
-        require: true,
-        maxLength: 100
-    },
-    lastname: {
-        type: String,
-        require: true,
-        maxLength: 100
-    },
-    birthday: {
-        type: String
+     
     },
     email: {
-        type: String
-    },
-    address: {
-        type: String
-    },
-    hireDate: {
         type: String
     },
     password: {
@@ -30,14 +15,22 @@ const EmployeesShema = new Schema({
     telephone: {
         type: String
     },
-    dui: {
+    address: {
         type: String
     },
-    isssNumber: {
+    role: {
         type: String
     },
-    isVerified: {
-        type: Boolean
+    hireDate: {
+        type: Date,
+       
+    },
+    salary: {
+        Type: Number
+    },
+    active: {
+        type: Boolean,
+        default: false
     }
 },{
     timestamps: true,
