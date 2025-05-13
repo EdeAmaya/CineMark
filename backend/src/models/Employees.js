@@ -26,7 +26,7 @@ const EmployeesShema = new Schema({
        
     },
     salary: {
-        Type: Number
+        type: Number
     },
     active: {
         type: Boolean,

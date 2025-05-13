@@ -9,7 +9,7 @@ import { json } from "express";
 registerEmployeesController.insertregisterEmployees = async (req,res) =>{
     const{name,email,password,telephone,address,role,hireDate,salary,active} = req.body;
     try{
-        const existEmployee = await EmployeesModels.findOne({correo})
+        const existEmployee = await EmployeesModels.findOne({email})
         if(existEmployee){
             return res.json({message:"Employee already exists"})
         }
